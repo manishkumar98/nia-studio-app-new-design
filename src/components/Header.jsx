@@ -1,64 +1,107 @@
-export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance }) {
-    return (
-        <nav className="bg-white/80 backdrop-blur-xl border-b border-gray-100 sticky top-0 z-50 h-16 px-6">
-            <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
-                {/* Logo */}
-                <div className="flex items-center gap-2.5">
-                    <div className="w-6 h-6 rounded-full bg-[#1d1d1f] flex items-center justify-center text-white">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3c1.105 0 2 .895 2 2s-.895 2-2 2-2-.895-2-2 .895-2 2-2zm4 12h-8v-1c0-1.333 2.667-2 4-2s4 .667 4 2v1z" />
-                        </svg>
-                    </div>
-                    <span className="text-xl font-bold tracking-tight text-[#1d1d1f]">Nia</span>
-                </div>
+export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance, activeTab, onSearchClick, onHomeClick, onTabChange, subPage }) {
+    const tabBgColors = {
+        studio: subPage === 'studio-details' ? 'bg-[#2a4e78]' : 'bg-[#061121]',
+        flow: 'bg-[#1a5c35]',
+        tribe: 'bg-[#a0440e]',
+        me: 'bg-white',
+        haat: 'bg-white',
+    }
 
-                {/* Desktop Nav - Right Aligned */}
-                <div className="hidden lg:flex items-center gap-8 ml-auto mr-12">
-                    {['Home', 'Studio', 'Flow', 'Tribe', 'Shop'].map(item => (
-                        <a
-                            key={item}
-                            href="#"
-                            className="text-[13px] font-medium text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
-                        >
-                            {item}
-                        </a>
-                    ))}
+    const isColored = activeTab && activeTab !== 'me' && activeTab !== 'haat'
+    const bgColor = tabBgColors[activeTab] || 'bg-white'
+    const textColor = isColored ? 'text-white' : 'text-[#1d1d1f]'
+    const navText = isColored ? 'text-white/60 hover:text-white' : 'text-[#86868b] hover:text-[#1d1d1f]'
+    const activeNavText = isColored ? 'text-white font-bold' : 'text-[#0071e3] font-bold'
+    const iconColor = isColored ? 'text-white/80' : 'text-[#1d1d1f]'
+    const logoBg = isColored ? 'bg-white/20' : 'bg-[#1d1d1f]'
+    const logoText = isColored ? 'text-white' : 'text-white'
+    const nameBg = isColored ? 'text-white' : 'text-[#1d1d1f]'
+
+    const navItems = [
+        { id: 'studio', label: 'Studio' },
+        { id: 'flow', label: 'Flow' },
+        { id: 'tribe', label: 'Tribe' },
+        { id: 'me', label: 'Me' },
+    ]
+
+    return (
+        <nav className={`${bgColor} sticky top-0 z-50 h-16 px-4 md:px-8 transition-colors duration-300 shadow-sm`}>
+            <div className="h-full flex items-center justify-between max-w-7xl mx-auto">
+                <div className="flex items-center gap-12">
+                    {/* Logo */}
+                    <button
+                        onClick={onHomeClick}
+                        className="flex items-center gap-2 active:scale-95 transition-transform"
+                    >
+                        <div className={`w-8 h-8 rounded-xl ${logoBg} flex items-center justify-center`}>
+                            <span className={`text-sm font-black ${logoText}`}>N</span>
+                        </div>
+                        <span className={`text-lg font-black tracking-tight ${nameBg}`}>Nia</span>
+                    </button>
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navItems.map(item => (
+                            <button
+                                key={item.id}
+                                onClick={() => onTabChange(item.id)}
+                                className={`text-sm tracking-tight transition-colors ${activeTab === item.id ? activeNavText : navText}`}
+                            >
+                                {item.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Right Actions */}
-                <div className="flex items-center gap-5">
-                    {/* Points Pill */}
-                    <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-[#f5f5f7] rounded-full border border-gray-100">
-                        <span className="text-amber-500 font-bold text-[10px]">⚡</span>
-                        <span className="text-[10px] font-bold text-[#1d1d1f]">{balance} <span className="opacity-50">pts</span></span>
-                    </div>
-
-                    <button className="text-[#1d1d1f] hover:opacity-70 transition-opacity">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </button>
-
-                    <button onClick={onCartClick} className="relative text-[#1d1d1f] hover:opacity-70 transition-opacity">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M16 11V7a4 4 0 11-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                        {cartCount > 0 && (
-                            <span className="absolute -top-1.5 -right-1.5 bg-[#0066FF] text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">
-                                {cartCount}
-                            </span>
-                        )}
-                    </button>
-
-                    {/* User Profile - Subtle */}
-                    <div className="flex items-center gap-3 pl-4 border-l border-gray-200">
-                        <div className="hidden sm:block text-right">
-                            <div className="text-[10px] font-bold text-[#1d1d1f]">{userName}</div>
-                            <div className="text-[8px] text-[#86868b] font-medium uppercase tracking-tight">{nestName}</div>
+                <div className="flex items-center gap-3">
+                    {/* Points (on light headers only) */}
+                    {!isColored && (
+                        <div className="hidden sm:flex items-center gap-1 px-3 py-1.5 bg-[#f5f5f7] rounded-full">
+                            <span className="text-amber-500 text-xs font-black">⚡</span>
+                            <span className="text-xs font-bold text-[#1d1d1f] tracking-tight">{balance} <span className="text-[#86868b] font-medium">pts</span></span>
                         </div>
-                        <button
-                            onClick={onSignOut}
-                            className="text-[#86868b] hover:text-red-500 transition-colors"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                    )}
+
+                    <button
+                        onClick={onSearchClick}
+                        className={`${iconColor} hover:scale-110 active:scale-90 transition-transform p-2 md:p-3`}
+                    >
+                        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+
+                    {/* Cart icon only on haat tab */}
+                    {(activeTab === 'haat') && (
+                        <button onClick={onCartClick} className={`relative ${iconColor} p-2 md:p-3`}>
+                            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            {cartCount > 0 && (
+                                <span className="absolute top-0 right-0 bg-[#0066FF] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                                    {cartCount}
+                                </span>
+                            )}
                         </button>
-                    </div>
+                    )}
+
+                    {/* Bell on studio / flow / tribe */}
+                    {(activeTab === 'studio' || activeTab === 'flow' || activeTab === 'tribe') && (
+                        <button className={`${iconColor} p-2 md:p-3`}>
+                            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
+                        </button>
+                    )}
+
+                    {/* Desktop Sign Out */}
+                    <button
+                        onClick={onSignOut}
+                        className={`hidden md:flex ml-4 px-5 py-2 rounded-xl text-sm font-bold border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
+                    >
+                        Sign Out
+                    </button>
                 </div>
             </div>
         </nav>

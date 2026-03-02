@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { usePoints } from '../context/PointsContext'
 
-export default function Me() {
+export default function Me({ onNavigate }) {
     const { currentUser, logout } = useAuth()
     const { getBalance, getTransactions, vouchers } = usePoints()
     const [selectedVoucher, setSelectedVoucher] = useState(null)
@@ -38,6 +38,26 @@ export default function Me() {
                     <div className="text-3xl font-bold mb-4">₹{(balance * 2.5).toLocaleString('en-IN')}</div>
                     <p className="text-xs text-gray-400 leading-relaxed font-medium">Estimated value of housing & insurance benefits unlocked through Nia pillars.</p>
                 </div>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="grid grid-cols-2 gap-3 mb-12">
+                <button
+                    onClick={() => onNavigate && onNavigate('earn')}
+                    className="bg-white p-5 rounded-[24px] border border-gray-100 flex flex-col items-center gap-2 shadow-sm hover:shadow-md active:scale-[0.98] transition-all"
+                >
+                    <span className="text-2xl">⚡</span>
+                    <span className="text-sm font-bold text-[#1d1d1f]">Earn Points</span>
+                    <span className="text-[10px] text-[#86868b]">See how to earn</span>
+                </button>
+                <button
+                    onClick={() => onNavigate && onNavigate('redeem')}
+                    className="bg-white p-5 rounded-[24px] border border-gray-100 flex flex-col items-center gap-2 shadow-sm hover:shadow-md active:scale-[0.98] transition-all"
+                >
+                    <span className="text-2xl">🎁</span>
+                    <span className="text-sm font-bold text-[#1d1d1f]">Redeem Rewards</span>
+                    <span className="text-[10px] text-[#86868b]">Use your points</span>
+                </button>
             </div>
 
             {/* Tabs / Sections */}
