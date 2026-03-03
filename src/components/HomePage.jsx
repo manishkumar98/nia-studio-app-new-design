@@ -1,4 +1,4 @@
-export default function HomePage({ onNavigate }) {
+export default function HomePage({ onNavigate, onGetStarted }) {
     const savingsHighlights = [
         { label: '₹400', sub: 'Save on rent', color: 'text-[#129d5b]' },
         { label: '10%', sub: 'Save on meals', color: 'text-[#129d5b]' },
@@ -54,10 +54,10 @@ export default function HomePage({ onNavigate }) {
 
                     <div className="flex items-center gap-6 pt-2">
                         <button
-                            onClick={() => onNavigate('store')}
+                            onClick={onGetStarted}
                             className="bg-[#2d4a6b] hover:bg-[#3d5a7b] text-white px-6 md:px-8 py-3.5 md:py-4 rounded-xl font-black text-[15px] md:text-lg shadow-lg active:scale-95 transition-all"
                         >
-                            See what you get
+                            Get Started
                         </button>
                         <button className="text-white/60 hover:text-white font-bold text-[15px] md:text-lg flex items-center gap-1 group">
                             Learn more
@@ -119,7 +119,7 @@ export default function HomePage({ onNavigate }) {
                     </div>
 
                     <button
-                        onClick={() => onNavigate('store')}
+                        onClick={onGetStarted}
                         className="bg-[#e67e22] hover:bg-[#d35400] text-white px-8 py-4 rounded-2xl font-black text-lg relative z-10 shadow-lg active:scale-95 transition-all shadow-orange-900/20 whitespace-nowrap"
                     >
                         Get Started →

@@ -40,6 +40,7 @@ export default function App() {
   // Sub-page routing: null = tab home, 'haat' | 'earn' | 'redeem' | 'leaderboard' | 'store' | 'studio-details'
   const [subPage, setSubPage] = useState(null)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isLanding, setIsLanding] = useState(true)
 
   const goToHome = () => {
     setActiveTab('studio')
@@ -63,6 +64,9 @@ export default function App() {
   }
 
   if (!currentUser) {
+    if (isLanding) {
+      return <HomePage onNavigate={handleTabChange} onGetStarted={() => setIsLanding(false)} />
+    }
     return <Login />
   }
 
