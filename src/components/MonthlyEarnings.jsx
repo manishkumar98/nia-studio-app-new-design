@@ -31,7 +31,7 @@ export default function MonthlyEarnings() {
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* Hero Earnings Section */}
-            <div className="bg-[#1a5c35] pt-12 pb-16 px-6 relative overflow-hidden">
+            <div className="bg-[#144b2a] pt-12 pb-16 px-6 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <p className="text-white/60 text-[11px] font-black uppercase tracking-[0.2em] mb-2">This month's earnings</p>
                     <h1 className="text-5xl font-black text-white tracking-tight">₹8,450</h1>

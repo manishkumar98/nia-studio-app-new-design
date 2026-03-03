@@ -1,16 +1,16 @@
 export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance, activeTab, onSearchClick, onHomeClick, onTabChange, subPage }) {
     const tabBgColors = {
         studio: 'bg-[#2b4e78]',
-        flow: 'bg-[#1a5c35]',
-        tribe: 'bg-[#a0440e]',
+        flow: 'bg-[#2e7d32]',
+        tribe: 'bg-[#a85018]',
         me: 'bg-[#2b4e78]',
         haat: 'bg-white',
         help: 'bg-[#c13535]',
         autosubscribe: 'bg-white',
-        earnings: 'bg-[#1a5c35]',
+        earnings: 'bg-[#2e7d32]',
         onboarding: 'bg-[#2b4e78]',
-        events: 'bg-[#a0440e]',
-        savings: 'bg-[#244d73]',
+        events: 'bg-[#a85018]',
+        savings: 'bg-[#2b4e78]',
         niapoints: 'bg-[#2b4e78]',
     }
 

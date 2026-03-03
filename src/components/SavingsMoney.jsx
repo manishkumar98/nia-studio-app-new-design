@@ -39,7 +39,7 @@ export default function SavingsMoney() {
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* Hero Section */}
-            <div className="bg-[#244d73] pt-12 pb-20 px-6 relative overflow-hidden text-center md:text-left">
+            <div className="bg-[#1e3752] pt-12 pb-20 px-6 relative overflow-hidden text-center md:text-left">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <p className="text-white/60 text-[11px] font-black uppercase tracking-[0.2em] mb-2">Total Savings</p>
                     <h1 className="text-5xl font-black text-white tracking-tight leading-none">₹14,500</h1>
