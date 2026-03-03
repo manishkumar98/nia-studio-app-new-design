@@ -16,6 +16,7 @@ import FlowPage from './components/FlowPage'
 import TribePage from './components/TribePage'
 import NiaHaat from './components/NiaHaat'
 import Me from './components/Me'
+import HelpPage from './components/HelpPage'
 import Scanner from './components/Scanner'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -162,6 +163,7 @@ export default function App() {
           onClose={() => setIsCartOpen(false)}
           onCheckout={() => setIsCheckout(true)}
         />
+        <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
       </div>
     )
   }
@@ -293,6 +295,28 @@ export default function App() {
           onClose={() => setIsCartOpen(false)}
           onCheckout={() => setIsCheckout(true)}
         />
+        <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
+      </div>
+    )
+  }
+
+  if (subPage === 'help') {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header
+          cartCount={cartCount}
+          onCartClick={() => setIsCartOpen(true)}
+          userName={currentUser.name}
+          nestName={currentUser.nestName}
+          onSignOut={logout}
+          balance={usePoints().getBalance(userId)}
+          activeTab="me"
+          subPage={subPage}
+          onSearchClick={() => setIsSearchOpen(true)}
+          onHomeClick={goToHome}
+          onTabChange={handleTabChange}
+        />
+        <HelpPage />
         <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
       </div>
     )

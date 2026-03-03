@@ -67,7 +67,7 @@ export default function Me({ onNavigate }) {
             ),
             title: 'Need help?',
             desc: 'Call or chat with us',
-            onClick: () => { }
+            onClick: () => onNavigate && onNavigate('help')
         },
         {
             icon: (

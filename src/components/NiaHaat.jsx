@@ -2,17 +2,17 @@ import { useState } from 'react'
 import { usePoints } from '../context/PointsContext'
 
 const haatProducts = [
-    { id: 'h1', name: 'Sanitary Pads', category: 'Essentials', emoji: '🧴', savePct: 'Save 20%', priceStr: '₹32 vs ₹40 MRP', price: 32 },
-    { id: 'h2', name: 'Maggi (4-pack)', category: 'Essentials', emoji: '🍜', savePct: 'Save 10%', priceStr: '₹45 vs ₹50 MRP', price: 45 },
+    { id: 'h1', name: 'Sanitary Pads', category: 'Tribe', emoji: '🧴', savePct: 'Save 20%', priceStr: '₹32 vs ₹40 MRP', price: 32 },
+    { id: 'h2', name: 'Maggi (4-pack)', category: 'Tribe', emoji: '🍜', savePct: 'Save 10%', priceStr: '₹45 vs ₹50 MRP', price: 45 },
     { id: 'h3', name: 'Nest Rent', category: 'Studio', emoji: '🏠', savePct: 'Save ₹400/mo', priceStr: '₹2,100 vs ₹2,500', price: 2100 },
-    { id: 'h4', name: 'Hair Oil (100ml)', category: 'Essentials', emoji: '✨', savePct: 'Save 15%', priceStr: '₹85 vs ₹100 MRP', price: 85 },
-    { id: 'h5', name: 'Paracetamol Strip', category: 'Health', emoji: '💊', savePct: 'Save 25%', priceStr: '₹15 vs ₹20 MRP', price: 15 },
-    { id: 'h6', name: 'Phone Recharge ₹199', category: 'Digital', emoji: '📱', savePct: 'Save ₹20', priceStr: '₹179 vs ₹199', price: 179 },
-    { id: 'h7', name: 'Instant Noodles', category: 'Essentials', emoji: '🍟', savePct: 'Save 12%', priceStr: '₹14 vs ₹16 MRP', price: 14 },
+    { id: 'h4', name: 'Hair Oil (100ml)', category: 'Tribe', emoji: '✨', savePct: 'Save 15%', priceStr: '₹85 vs ₹100 MRP', price: 85 },
+    { id: 'h5', name: 'Paracetamol Strip', category: 'Tribe', emoji: '💊', savePct: 'Save 25%', priceStr: '₹15 vs ₹20 MRP', price: 15 },
+    { id: 'h6', name: 'Phone Recharge ₹199', category: 'Flow', emoji: '📱', savePct: 'Save ₹20', priceStr: '₹179 vs ₹199', price: 179 },
+    { id: 'h7', name: 'Instant Noodles', category: 'Tribe', emoji: '🍟', savePct: 'Save 12%', priceStr: '₹14 vs ₹16 MRP', price: 14 },
     { id: 'h8', name: 'Job Match Plan', category: 'Flow', emoji: '💼', savePct: 'Save ₹100', priceStr: '₹99 vs ₹199', price: 99 },
 ]
 
-const filters = ['All', 'Studio', 'Flow', 'Essentials', 'Health', 'Digital']
+const filters = ['All', 'Studio', 'Flow', 'Tribe']
 
 export default function NiaHaat({ onBack }) {
     const [search, setSearch] = useState('')
@@ -56,11 +56,6 @@ export default function NiaHaat({ onBack }) {
                             <h1 className="text-xl font-black text-[#1d1d1f] tracking-tight">Nia Haat</h1>
                             <p className="text-[#86868b] text-xs">Best prices. Everything right here.</p>
                         </div>
-                        <button className="w-9 h-9 flex items-center justify-center text-[#1d1d1f]">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </button>
                     </div>
                 </div>
 
