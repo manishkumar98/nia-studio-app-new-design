@@ -20,6 +20,7 @@ import HelpPage from './components/HelpPage'
 import AutoSubscribe from './components/AutoSubscribe'
 import MonthlyEarnings from './components/MonthlyEarnings'
 import OnboardingPage from './components/OnboardingPage'
+import TribeEventsPage from './components/TribeEventsPage'
 import Scanner from './components/Scanner'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -386,6 +387,28 @@ export default function App() {
           onTabChange={handleTabChange}
         />
         <OnboardingPage />
+        <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
+      </div>
+    )
+  }
+
+  if (subPage === 'events') {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header
+          cartCount={cartCount}
+          onCartClick={() => setIsCartOpen(true)}
+          userName={currentUser.name}
+          nestName={currentUser.nestName}
+          onSignOut={logout}
+          balance={usePoints().getBalance(userId)}
+          activeTab="tribe"
+          subPage={subPage}
+          onSearchClick={() => setIsSearchOpen(true)}
+          onHomeClick={goToHome}
+          onTabChange={handleTabChange}
+        />
+        <TribeEventsPage />
         <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
       </div>
     )

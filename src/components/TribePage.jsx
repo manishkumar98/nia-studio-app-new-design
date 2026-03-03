@@ -117,6 +117,23 @@ export default function TribePage({ onNavigate }) {
                     </div>
                 ))}
 
+                {/* Tribe Events Quick Access */}
+                <button
+                    onClick={() => onNavigate && onNavigate('events')}
+                    className="bg-white rounded-2xl px-4 py-3.5 flex items-center gap-3 shadow-sm w-full text-left active:scale-[0.98] transition-transform border border-gray-100"
+                >
+                    <div className="w-10 h-10 rounded-xl bg-[#fff5eb] flex items-center justify-center text-lg flex-shrink-0">
+                        📅
+                    </div>
+                    <div className="flex-1">
+                        <p className="font-bold text-[#1d1d1f] text-sm">Tribe Events</p>
+                        <p className="text-[#86868b] text-xs">Calendar, fun & rewards</p>
+                    </div>
+                    <svg className="w-4 h-4 text-[#86868b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
                 {/* Leaderboard Quick Access */}
                 <button
                     onClick={() => onNavigate && onNavigate('leaderboard')}
