@@ -51,6 +51,18 @@ export default function FlowPage({ onNavigate }) {
                 <p className="text-[#7dc09a] text-sm font-medium mt-1">
                     Direct jobs. No agent fees. No commission.
                 </p>
+                <button
+                    onClick={() => onNavigate && onNavigate('earnings')}
+                    className="mt-6 w-full py-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-2xl flex items-center justify-between px-6 transition-all active:scale-[0.98]"
+                >
+                    <div className="flex items-center gap-3">
+                        <span className="text-xl">💰</span>
+                        <span className="font-bold text-white text-sm">Monthly earnings check</span>
+                    </div>
+                    <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
 
             {/* Savings List */}
