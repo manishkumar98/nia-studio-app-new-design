@@ -32,6 +32,14 @@ export default function StudioPage({ onNavigate }) {
             badge: 'Kit included',
             navigateTo: null,
         },
+        {
+            id: 'autosubscribe',
+            emoji: '🔄',
+            title: 'Auto-subscribe',
+            desc: 'Daily essentials at best rates',
+            badge: 'Save ₹240/mo extra',
+            navigateTo: 'autosubscribe',
+        },
     ]
 
     return (
