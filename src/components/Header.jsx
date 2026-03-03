@@ -3,11 +3,11 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
         studio: subPage === 'studio-details' ? 'bg-[#2a4e78]' : 'bg-[#061121]',
         flow: 'bg-[#1a5c35]',
         tribe: 'bg-[#a0440e]',
-        me: 'bg-white',
+        me: 'bg-[#061121]',
         haat: 'bg-white',
     }
 
-    const isColored = activeTab && activeTab !== 'me' && activeTab !== 'haat'
+    const isColored = activeTab && activeTab !== 'haat'
     const bgColor = tabBgColors[activeTab] || 'bg-white'
     const textColor = isColored ? 'text-white' : 'text-[#1d1d1f]'
     const navText = isColored ? 'text-white/60 hover:text-white' : 'text-[#86868b] hover:text-[#1d1d1f]'
@@ -63,14 +63,26 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
                         </div>
                     )}
 
-                    <button
-                        onClick={onSearchClick}
-                        className={`${iconColor} hover:scale-110 active:scale-90 transition-transform p-2 md:p-3`}
-                    >
-                        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </button>
+                    {activeTab !== 'haat' && activeTab !== 'me' && (
+                        <button
+                            onClick={onSearchClick}
+                            className={`${iconColor} hover:scale-110 active:scale-90 transition-transform p-2 md:p-3`}
+                        >
+                            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    )}
+
+                    {/* Settings icon only on me tab */}
+                    {activeTab === 'me' && (
+                        <button className={`${iconColor} bg-white/10 hover:bg-white/20 p-2 rounded-xl transition-all`}>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </button>
+                    )}
 
                     {/* Cart icon only on haat tab */}
                     {(activeTab === 'haat') && (
