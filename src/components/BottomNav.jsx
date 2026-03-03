@@ -1,4 +1,4 @@
-export default function BottomNav({ activeTab, onTabChange, subPage }) {
+export default function BottomNav({ activeTab, onTabChange, subPage, isAuthenticated }) {
     const tabs = [
         {
             id: 'studio',
@@ -29,10 +29,14 @@ export default function BottomNav({ activeTab, onTabChange, subPage }) {
         },
         {
             id: 'me',
-            label: 'Me',
-            icon: (active) => (
+            label: isAuthenticated ? 'Me' : 'Login',
+            icon: (active) => isAuthenticated ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={active ? 2.5 : 2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={active ? 2.5 : 2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                 </svg>
             ),
         },
