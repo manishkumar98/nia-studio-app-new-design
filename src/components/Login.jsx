@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { mockUsers } from '../data/mockUsers'
 
-export default function Login() {
+export default function Login({ onBackToLanding }) {
   const [portal, setPortal] = useState('resident') // 'resident' or 'staff'
   const [method, setMethod] = useState('legacy')
   const [empId, setEmpId] = useState('')
@@ -92,12 +92,15 @@ export default function Login() {
 
       {/* Header */}
       <header className="w-full py-10 px-6 relative z-30 flex items-center max-w-7xl mx-auto">
-        <div className="flex items-center gap-3">
+        <button
+          onClick={onBackToLanding}
+          className="flex items-center gap-3 active:scale-95 transition-transform"
+        >
           <div className="w-9 h-9 bg-white/10 backdrop-blur-xl rounded-xl flex items-center justify-center border border-white/10">
             <span className="text-white font-black text-sm">N</span>
           </div>
           <span className="text-xl font-black tracking-tight text-white">Nia</span>
-        </div>
+        </button>
       </header>
 
       {/* Main Login Area */}

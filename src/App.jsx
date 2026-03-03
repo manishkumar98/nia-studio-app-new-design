@@ -38,7 +38,7 @@ export default function App() {
   const [isCheckout, setIsCheckout] = useState(false)
   const [staffView, setStaffView] = useState('scanner')
   // Sub-page routing: null = tab home, 'haat' | 'earn' | 'redeem' | 'leaderboard' | 'store' | 'studio-details'
-  const [subPage, setSubPage] = useState(null)
+  const [subPage, setSubPage] = useState('studio-details')
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isLanding, setIsLanding] = useState(true)
 
@@ -67,7 +67,7 @@ export default function App() {
     if (isLanding) {
       return <HomePage onNavigate={handleTabChange} onGetStarted={() => setIsLanding(false)} />
     }
-    return <Login />
+    return <Login onBackToLanding={() => setIsLanding(true)} />
   }
 
   const isStaff = currentUser.role === 'eae' || currentUser.role === 'jco'
@@ -485,7 +485,10 @@ export default function App() {
         {activeTab === 'studio' && (
           subPage === 'studio-details'
             ? <StudioPage onNavigate={(page) => setSubPage(page)} />
-            : <HomePage onNavigate={(page) => setSubPage(page)} />
+            : <HomePage
+              onNavigate={(page) => setSubPage(page)}
+              onGetStarted={() => setSubPage('studio-details')}
+            />
         )}
         {activeTab === 'flow' && <FlowPage onNavigate={(page) => setSubPage(page)} />}
         {activeTab === 'tribe' && <TribePage onNavigate={(page) => setSubPage(page)} />}
