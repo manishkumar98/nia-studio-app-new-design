@@ -66,10 +66,16 @@ export default function App() {
   if (!currentUser) {
     if (isLanding) {
       return (
-        <>
+        <div className="min-h-screen bg-white">
+          <Header
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+            subPage={subPage}
+            onHomeClick={() => setSubPage(null)}
+          />
           <HomePage onNavigate={handleTabChange} onGetStarted={() => setIsLanding(false)} />
           <BottomNav activeTab={activeTab} onTabChange={handleTabChange} subPage={subPage} />
-        </>
+        </div>
       )
     }
     return <Login onBackToLanding={() => setIsLanding(true)} />

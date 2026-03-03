@@ -44,9 +44,7 @@ export default function BottomNav({ activeTab, onTabChange, subPage }) {
         <nav className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-gray-100 z-50 md:hidden pb-safe">
             <div className="flex items-center justify-around h-16 max-w-lg mx-auto px-2">
                 {tabs.map(tab => {
-                    // Logic: Studio tab shouldn't be highlighted if on the home page (subPage is null and current tab is studio)
-                    const isHomeStudio = tab.id === 'studio' && subPage === null && activeTab === 'studio'
-                    const isActive = activeTab === tab.id && !isHomeStudio
+                    const isActive = activeTab === tab.id
 
                     return (
                         <button

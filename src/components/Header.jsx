@@ -115,12 +115,14 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
                     )}
 
                     {/* Desktop Sign Out */}
-                    <button
-                        onClick={onSignOut}
-                        className={`hidden md:flex ml-4 px-5 py-2 rounded-xl text-sm font-bold border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
-                    >
-                        Sign Out
-                    </button>
+                    {onSignOut && (
+                        <button
+                            onClick={onSignOut}
+                            className={`hidden md:flex ml-4 px-5 py-2 rounded-xl text-sm font-bold border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
+                        >
+                            Sign Out
+                        </button>
+                    )}
                 </div>
             </div>
         </nav>
