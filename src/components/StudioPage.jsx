@@ -40,6 +40,14 @@ export default function StudioPage({ onNavigate }) {
             badge: 'Save ₹240/mo extra',
             navigateTo: 'autosubscribe',
         },
+        {
+            id: 'onboarding',
+            emoji: '📱',
+            title: 'Digital Onboarding',
+            desc: 'Complete your first day steps',
+            badge: '3/5 steps done',
+            navigateTo: 'onboarding',
+        },
     ]
 
     return (

@@ -8,6 +8,7 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
         help: 'bg-[#c13535]',
         autosubscribe: 'bg-white',
         earnings: 'bg-[#1a5c35]',
+        onboarding: 'bg-[#061121]',
     }
 
     const isColored = activeTab && activeTab !== 'haat'
