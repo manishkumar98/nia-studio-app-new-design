@@ -22,6 +22,7 @@ import MonthlyEarnings from './components/MonthlyEarnings'
 import OnboardingPage from './components/OnboardingPage'
 import TribeEventsPage from './components/TribeEventsPage'
 import SavingsMoney from './components/SavingsMoney'
+import NiaPointsPage from './components/NiaPointsPage'
 import Scanner from './components/Scanner'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -432,6 +433,28 @@ export default function App() {
           onTabChange={handleTabChange}
         />
         <SavingsMoney />
+        <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
+      </div>
+    )
+  }
+
+  if (subPage === 'niapoints') {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header
+          cartCount={cartCount}
+          onCartClick={() => setIsCartOpen(true)}
+          userName={currentUser.name}
+          nestName={currentUser.nestName}
+          onSignOut={logout}
+          balance={usePoints().getBalance(userId)}
+          activeTab="studio"
+          subPage={subPage}
+          onSearchClick={() => setIsSearchOpen(true)}
+          onHomeClick={goToHome}
+          onTabChange={handleTabChange}
+        />
+        <NiaPointsPage onNavigate={(page) => setSubPage(page)} />
         <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} />
       </div>
     )

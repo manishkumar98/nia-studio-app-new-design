@@ -11,6 +11,7 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
         onboarding: 'bg-[#061121]',
         events: 'bg-[#a0440e]',
         savings: 'bg-[#244d73]',
+        niapoints: 'bg-[#061121]',
     }
 
     const isColored = activeTab && activeTab !== 'haat'

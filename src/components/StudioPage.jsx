@@ -56,6 +56,14 @@ export default function StudioPage({ onNavigate }) {
             badge: '₹14.5K saved',
             navigateTo: 'savings',
         },
+        {
+            id: 'niapoints',
+            emoji: '⚡',
+            title: 'Nia Points',
+            desc: 'Daily streaks, rewards & history',
+            badge: '342 pts',
+            navigateTo: 'niapoints',
+        },
     ]
 
     return (
