@@ -9,7 +9,7 @@ export default function TribePage({ onNavigate }) {
                     desc: 'Get a degree from top colleges on...',
                     badge: 'Certificate',
                     badgeNote: 'included',
-                    badgeColor: 'text-[#1d1d1f]',
+                    badgeColor: 'text-[#1a5c35]',
                 },
                 {
                     emoji: '💻',
@@ -67,7 +67,7 @@ export default function TribePage({ onNavigate }) {
                     desc: 'Chat groups, mentors & community help',
                     badge: 'Always',
                     badgeNote: 'available',
-                    badgeColor: 'text-[#1d1d1f]',
+                    badgeColor: 'text-[#1a5c35]',
                 },
             ],
         },
