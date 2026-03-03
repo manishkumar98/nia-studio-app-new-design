@@ -48,6 +48,14 @@ export default function StudioPage({ onNavigate }) {
             badge: '3/5 steps done',
             navigateTo: 'onboarding',
         },
+        {
+            id: 'savings',
+            emoji: '💰',
+            title: 'Savings & Money',
+            desc: 'Chit fund, gold & emergency fund',
+            badge: '₹14.5K saved',
+            navigateTo: 'savings',
+        },
     ]
 
     return (
