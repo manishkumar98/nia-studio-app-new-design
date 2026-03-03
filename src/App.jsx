@@ -65,7 +65,12 @@ export default function App() {
 
   if (!currentUser) {
     if (isLanding) {
-      return <HomePage onNavigate={handleTabChange} onGetStarted={() => setIsLanding(false)} />
+      return (
+        <>
+          <HomePage onNavigate={handleTabChange} onGetStarted={() => setIsLanding(false)} />
+          <BottomNav activeTab={activeTab} onTabChange={handleTabChange} subPage={subPage} />
+        </>
+      )
     }
     return <Login onBackToLanding={() => setIsLanding(true)} />
   }
