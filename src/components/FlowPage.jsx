@@ -45,7 +45,7 @@ export default function FlowPage({ onNavigate }) {
     return (
         <div className="min-h-screen bg-white pb-28">
             {/* Hero */}
-            <div className="bg-[#1a5c35] px-5 pt-8 pb-10">
+            <div className="bg-[#144b2a] px-5 pt-8 pb-10">
                 <div className="text-4xl mb-3">💼</div>
                 <h1 className="text-3xl font-black text-white tracking-tight leading-tight">Flow</h1>
                 <p className="text-[#7dc09a] text-sm font-medium mt-1">

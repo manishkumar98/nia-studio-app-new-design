@@ -35,7 +35,7 @@ export default function HelpPage() {
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* SOS Hero Section */}
-            <div className="bg-[#c13535] pt-12 pb-16 px-6 text-center">
+            <div className="bg-[#a12c2c] pt-12 pb-16 px-6 text-center">
                 <div className="flex justify-center mb-6">
                     <button className="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center p-3 animate-pulse">
                         <div className="w-full h-full rounded-full bg-white flex items-center justify-center shadow-2xl shadow-red-900 border-4 border-red-400">

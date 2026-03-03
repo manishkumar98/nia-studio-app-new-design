@@ -1,6 +1,6 @@
 export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance, activeTab, onSearchClick, onHomeClick, onTabChange, subPage }) {
     const tabBgColors = {
-        studio: subPage === 'studio-details' ? 'bg-[#2a4e78]' : 'bg-[#2b4e78]',
+        studio: 'bg-[#2b4e78]',
         flow: 'bg-[#1a5c35]',
         tribe: 'bg-[#a0440e]',
         me: 'bg-[#2b4e78]',
@@ -32,7 +32,7 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
     ]
 
     return (
-        <nav className={`${bgColor} sticky top-0 z-50 h-16 px-4 md:px-8 transition-colors duration-300 shadow-sm`}>
+        <nav className={`${bgColor} sticky top-0 z-50 h-16 px-4 md:px-8 transition-colors duration-300 shadow-sm border-b ${isColored ? 'border-white/10' : 'border-gray-50'}`}>
             <div className="h-full flex items-center justify-between max-w-7xl mx-auto">
                 <div className="flex items-center gap-12">
                     {/* Logo */}

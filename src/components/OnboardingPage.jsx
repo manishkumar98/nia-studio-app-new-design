@@ -48,7 +48,7 @@ export default function OnboardingPage() {
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* Hero Section */}
-            <div className="bg-[#2b4e78] pt-12 pb-20 px-6 text-center relative overflow-hidden">
+            <div className="bg-[#1e3752] pt-12 pb-20 px-6 text-center relative overflow-hidden">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <h1 className="text-3xl font-black text-white tracking-tight">Welcome to Nia</h1>
                     <p className="text-white/40 text-sm font-medium mt-1">

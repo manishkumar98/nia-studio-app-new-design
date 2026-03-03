@@ -69,7 +69,7 @@ export default function StudioPage({ onNavigate }) {
     return (
         <div className="min-h-screen bg-[#f5f5f7] pb-28">
             {/* Hero Section */}
-            <div className="bg-[#2a4e78] px-6 pt-10 pb-12 md:pb-20 relative overflow-hidden">
+            <div className="bg-[#1e3752] px-6 pt-10 pb-12 md:pb-20 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">Studio</h1>
                     <p className="text-white/60 text-sm md:text-lg font-medium mt-1">

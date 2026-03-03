@@ -85,7 +85,7 @@ export default function Me({ onNavigate }) {
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* Hero Profile Section */}
-            <div className="bg-[#2b4e78] pt-12 pb-24 px-6 relative overflow-hidden">
+            <div className="bg-[#1e3752] pt-12 pb-24 px-6 relative overflow-hidden">
                 {/* Subtle background circles */}
                 <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-[#0071e3]/10 rounded-full blur-3xl"></div>
 

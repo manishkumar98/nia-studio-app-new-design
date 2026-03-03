@@ -76,7 +76,7 @@ export default function TribePage({ onNavigate }) {
     return (
         <div className="min-h-screen bg-white pb-28">
             {/* Hero */}
-            <div className="bg-[#a0440e] px-5 pt-8 pb-10">
+            <div className="bg-[#8a3a0c] px-5 pt-8 pb-10">
                 <div className="text-4xl mb-3">🤝</div>
                 <h1 className="text-3xl font-black text-white tracking-tight leading-tight">Tribe</h1>
                 <p className="text-[#e3b08a] text-sm font-medium mt-1">
