@@ -30,7 +30,7 @@ export default function TribePage({ onNavigate }) {
                     desc: 'Make & sell food, crafts or clot...',
                     badge: 'Keep 85-95%',
                     badgeNote: 'earnings',
-                    badgeColor: 'text-[#1d1d1f]',
+                    badgeColor: 'text-[#1a5c35]',
                 },
                 {
                     emoji: '👥',
@@ -38,7 +38,7 @@ export default function TribePage({ onNavigate }) {
                     desc: 'Bring others to Nia, earn points',
                     badge: '+50 pts',
                     badgeNote: 'per referral',
-                    badgeColor: 'text-[#1d1d1f]',
+                    badgeColor: 'text-[#1a5c35]',
                 },
                 {
                     emoji: '⭐',
@@ -46,7 +46,7 @@ export default function TribePage({ onNavigate }) {
                     desc: 'Lead your floor, earn extra every month',
                     badge: '+₹500',
                     badgeNote: '/month',
-                    badgeColor: 'text-[#1d1d1f]',
+                    badgeColor: 'text-[#1a5c35]',
                 },
             ],
         },
