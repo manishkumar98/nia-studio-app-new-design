@@ -70,7 +70,7 @@ export default function App() {
   }
 
   if (!currentUser && showingLogin) {
-    return <Login onBackToLanding={() => setShowingLogin(false)} />
+    return <Login onBackToLanding={() => { setShowingLogin(false); goToHome(); }} />
   }
 
   const isStaff = currentUser?.role === 'eae' || currentUser?.role === 'jco'
@@ -78,12 +78,12 @@ export default function App() {
   const userId = currentUser?.uid || currentUser?.id
 
   // --- STAFF VIEW (unchanged) ---
-  if (isStaff) {
+  if (isStaff && subPage !== null) {
     return (
       <div className="min-h-screen bg-[#fafafa]">
         <nav className="bg-white border-b border-gray-200 sticky top-0 z-40 h-14 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <button onClick={goToHome} className="flex items-center gap-3 active:scale-95 transition-transform">
               <div className="w-9 h-9 bg-[#1d1d1f] rounded-xl flex items-center justify-center text-white">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -93,7 +93,7 @@ export default function App() {
                 <span className="text-base font-black tracking-tight text-[#1d1d1f]">Nia Staff</span>
                 <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 text-[10px] font-bold rounded-lg uppercase">{currentUser.role}</span>
               </div>
-            </div>
+            </button>
 
             <div className="flex items-center gap-4">
               <div className="hidden md:block text-right">
@@ -164,6 +164,7 @@ export default function App() {
           nestName={currentUser?.nestName}
           onSignOut={logout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
+          userRole={currentUser?.role}
           activeTab="haat"
           onSearchClick={() => setIsSearchOpen(true)}
           onHomeClick={goToHome}
@@ -286,6 +287,7 @@ export default function App() {
           nestName={currentUser?.nestName}
           onSignOut={logout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
+          userRole={currentUser?.role}
           activeTab="haat"
           onSearchClick={() => setIsSearchOpen(true)}
           onHomeClick={goToHome}
@@ -323,7 +325,8 @@ export default function App() {
           nestName={currentUser?.nestName}
           onSignOut={logout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
-          activeTab="me"
+          userRole={currentUser?.role}
+          activeTab="help"
           subPage={subPage}
           onSearchClick={() => setIsSearchOpen(true)}
           onHomeClick={goToHome}
@@ -351,7 +354,7 @@ export default function App() {
           onHomeClick={goToHome}
           onTabChange={handleTabChange}
         />
-        <AutoSubscribe />
+        <AutoSubscribe onTriggerLogin={() => setShowingLogin(true)} />
         <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} isAuthenticated={!!currentUser} />
       </div>
     )
@@ -367,6 +370,7 @@ export default function App() {
           nestName={currentUser?.nestName}
           onSignOut={logout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
+          userRole={currentUser?.role}
           activeTab="flow"
           subPage={subPage}
           onSearchClick={() => setIsSearchOpen(true)}
@@ -477,6 +481,7 @@ export default function App() {
         nestName={currentUser?.nestName}
         onSignOut={logout}
         balance={currentUser ? usePoints().getBalance(userId) : 0}
+        userRole={currentUser?.role}
         activeTab={activeTab}
         subPage={subPage}
         onSearchClick={() => setIsSearchOpen(true)}

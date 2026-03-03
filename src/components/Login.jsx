@@ -111,9 +111,7 @@ export default function Login({ onBackToLanding }) {
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#2a1b18] text-[#d27c3c] text-[11px] font-black uppercase tracking-wider">
               {portal === 'staff' ? 'Enterprise Staff Terminal' : 'Low Prices. Right Next Door.'}
             </span>
-            <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1]">
-              Login to<br />{portal === 'staff' ? 'Staff' : 'Studio'}
-            </h1>
+
           </div>
 
           {/* Login Card */}

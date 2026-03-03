@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
-export default function AutoSubscribe() {
+export default function AutoSubscribe({ onTriggerLogin }) {
     const { currentUser } = useAuth();
     const [isConfirmed, setIsConfirmed] = useState(false);
+
+    // ... rest of state ...
+
+    const handleConfirm = () => {
+        if (!currentUser) {
+            onTriggerLogin?.();
+            return;
+        }
+        setIsConfirmed(true);
+    };
     const [orderId] = useState('SUB-' + Math.random().toString(36).substr(2, 9).toUpperCase());
 
     const [subscriptions, setSubscriptions] = useState([
@@ -145,7 +155,7 @@ export default function AutoSubscribe() {
             {/* Fixed Checkout Button */}
             <div className="fixed bottom-24 left-0 right-0 px-6 animate-fadeUp">
                 <button
-                    onClick={() => setIsConfirmed(true)}
+                    onClick={handleConfirm}
                     disabled={total === 0}
                     className={`w-full py-5 rounded-[24px] font-black text-white shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 ${total === 0 ? 'bg-gray-300' : 'bg-[#1d1d1f]'}`}
                 >

@@ -5,8 +5,8 @@ import { useAuth } from '../context/AuthContext';
 export default function NiaPointsPage({ onNavigate }) {
     const { currentUser } = useAuth();
     const { getBalance } = usePoints();
-    const userId = currentUser.uid || currentUser.id;
-    const balance = getBalance(userId);
+    const userId = currentUser?.uid || currentUser?.id;
+    const balance = userId ? getBalance(userId) : 0;
 
     const historyToday = [
         {
@@ -65,8 +65,18 @@ export default function NiaPointsPage({ onNavigate }) {
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* Hero Section */}
-            <div className="bg-[#1e3752] pt-12 pb-24 px-6 text-center relative overflow-hidden">
-                <div className="max-w-7xl mx-auto relative z-10">
+            <div className="bg-[#1e3752] pt-12 pb-24 px-6 relative overflow-hidden">
+                {/* Back button for navigation */}
+                <div className="max-w-7xl mx-auto relative z-30 mb-4">
+                    <button onClick={() => onNavigate && onNavigate(null)} className="text-white/60 hover:text-white font-bold text-sm flex items-center gap-1">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                </div>
+
+                <div className="max-w-7xl mx-auto relative z-10 text-center">
                     <p className="text-white/40 text-[11px] font-black uppercase tracking-[0.2em] mb-2">Your Nia Points</p>
                     <h1 className="text-6xl font-black text-white tracking-tight">{balance}</h1>
 

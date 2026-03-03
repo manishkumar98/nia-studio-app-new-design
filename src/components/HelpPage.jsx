@@ -2,44 +2,20 @@ import React from 'react';
 
 export default function HelpPage() {
     const helpitems = [
-        {
-            icon: '🚶',
-            title: 'Feeling unsafe?',
-            desc: 'Talk to Nest Manager, 24/7',
-            buttonColor: 'bg-[#c13535]',
-            iconBg: 'bg-red-50'
-        },
-        {
-            icon: '🏥',
-            title: 'Need a doctor',
-            desc: 'Hospital call right away',
-            buttonColor: 'bg-[#c13535]',
-            iconBg: 'bg-red-50'
-        },
-        {
-            icon: '🚲',
-            title: 'Police',
-            desc: 'Direct call to police station',
-            buttonColor: 'bg-[#2a4e78]',
-            iconBg: 'bg-blue-50'
-        },
-        {
-            icon: '👥',
-            title: 'Call family',
-            desc: 'Call home + Nia support',
-            buttonColor: 'bg-[#2a4e78]',
-            iconBg: 'bg-green-50'
-        }
+        { icon: '🚶', title: 'Feeling unsafe?', desc: 'Talk to Nest Manager, 24/7', buttonColor: 'bg-[#b91c1c]', iconBg: 'bg-red-50' },
+        { icon: '🏥', title: 'Need a doctor', desc: 'Hospital call right away', buttonColor: 'bg-[#b91c1c]', iconBg: 'bg-red-50' },
+        { icon: '🚲', title: 'Police', desc: 'Direct call to police station', buttonColor: 'bg-[#b91c1c]', iconBg: 'bg-blue-50' },
+        { icon: '👥', title: 'Call family', desc: 'Call home + Nia support', buttonColor: 'bg-[#b91c1c]', iconBg: 'bg-green-50' }
     ];
 
     return (
         <div className="min-h-screen bg-white pb-32">
             {/* SOS Hero Section */}
-            <div className="bg-[#a12c2c] pt-12 pb-16 px-6 text-center">
+            <div className="bg-[#b91c1c] pt-12 pb-16 px-6 text-center">
                 <div className="flex justify-center mb-6">
                     <button className="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center p-3 animate-pulse">
                         <div className="w-full h-full rounded-full bg-white flex items-center justify-center shadow-2xl shadow-red-900 border-4 border-red-400">
-                            <span className="text-[#c13535] text-2xl font-black">SOS</span>
+                            <span className="text-[#b91c1c] text-2xl font-black">SOS</span>
                         </div>
                     </button>
                 </div>

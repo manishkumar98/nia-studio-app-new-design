@@ -1,11 +1,11 @@
-export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance, activeTab, onSearchClick, onHomeClick, onTabChange, subPage }) {
+export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance, activeTab, onSearchClick, onHomeClick, onTabChange, subPage, userRole }) {
     const tabBgColors = {
         studio: 'bg-[#2b4e78]',
         flow: 'bg-[#2e7d32]',
         tribe: 'bg-[#a85018]',
         me: 'bg-[#2b4e78]',
         haat: 'bg-white',
-        help: 'bg-[#c13535]',
+        help: 'bg-[#b91c1c]',
         autosubscribe: 'bg-white',
         earnings: 'bg-[#2e7d32]',
         onboarding: 'bg-[#2b4e78]',
@@ -28,8 +28,11 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
         { id: 'studio', label: 'Studio' },
         { id: 'flow', label: 'Flow' },
         { id: 'tribe', label: 'Tribe' },
-        { id: 'me', label: 'Me' },
     ]
+
+    if (userName) {
+        navItems.push({ id: 'me', label: 'Me' })
+    }
 
     return (
         <nav className={`${bgColor} sticky top-0 z-50 h-16 px-4 md:px-8 transition-colors duration-300 shadow-sm border-b ${isColored ? 'border-white/10' : 'border-gray-50'}`}>
@@ -81,15 +84,7 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
                         </button>
                     )}
 
-                    {/* Settings icon only on me tab */}
-                    {activeTab === 'me' && (
-                        <button className={`${iconColor} bg-white/10 hover:bg-white/20 p-2 rounded-xl transition-all`}>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </button>
-                    )}
+                    {/* Settings icon removed as requested */}
 
                     {/* Cart icon only on haat tab */}
                     {(activeTab === 'haat') && (
@@ -114,13 +109,12 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
                         </button>
                     )}
 
-                    {/* Desktop Sign Out */}
-                    {onSignOut && (
+                    {!userName && (
                         <button
-                            onClick={onSignOut}
-                            className={`hidden md:flex ml-4 px-5 py-2 rounded-xl text-sm font-bold border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
+                            onClick={() => onTabChange('me')}
+                            className={`ml-4 px-6 py-2 rounded-xl text-sm font-black border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
                         >
-                            Sign Out
+                            Login
                         </button>
                     )}
                 </div>
