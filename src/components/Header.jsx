@@ -1,17 +1,17 @@
 export default function Header({ cartCount, onCartClick, userName, nestName, onSignOut, balance, activeTab, onSearchClick, onHomeClick, onTabChange, subPage }) {
     const tabBgColors = {
-        studio: subPage === 'studio-details' ? 'bg-[#2a4e78]' : 'bg-[#061121]',
+        studio: subPage === 'studio-details' ? 'bg-[#2a4e78]' : 'bg-[#2b4e78]',
         flow: 'bg-[#1a5c35]',
         tribe: 'bg-[#a0440e]',
-        me: 'bg-[#061121]',
+        me: 'bg-[#2b4e78]',
         haat: 'bg-white',
         help: 'bg-[#c13535]',
         autosubscribe: 'bg-white',
         earnings: 'bg-[#1a5c35]',
-        onboarding: 'bg-[#061121]',
+        onboarding: 'bg-[#2b4e78]',
         events: 'bg-[#a0440e]',
         savings: 'bg-[#244d73]',
-        niapoints: 'bg-[#061121]',
+        niapoints: 'bg-[#2b4e78]',
     }
 
     const isColored = activeTab && activeTab !== 'haat'
