@@ -29,18 +29,19 @@ import Footer from './components/Footer'
 import Checkout from './components/Checkout'
 import OrderTerminal from './components/OrderTerminal'
 import GlobalSearch from './components/GlobalSearch'
+import NestDetails from './components/NestDetails'
 
 export default function App() {
-  const { currentUser, logout, loading } = useAuth()
+  const { currentUser, logout: authLogout, loading } = useAuth()
   const { cart } = usePoints()
   const [activeTab, setActiveTab] = useState('studio')
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isCheckout, setIsCheckout] = useState(false)
   const [staffView, setStaffView] = useState('scanner')
   // Sub-page routing: null = tab home, 'haat' | 'earn' | 'redeem' | 'leaderboard' | 'store' | 'studio-details'
-  const [subPage, setSubPage] = useState('studio-details')
+  const [subPage, setSubPage] = useState(null)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [isLanding, setIsLanding] = useState(true)
+
   const [showingLogin, setShowingLogin] = useState(false)
 
   const goToHome = () => {
@@ -48,6 +49,11 @@ export default function App() {
     setSubPage(null)
     setIsCheckout(false)
     setIsSearchOpen(false)
+  }
+
+  const handleLogout = async () => {
+    await authLogout()
+    goToHome()
   }
 
   const handleTabChange = (tab) => {
@@ -101,7 +107,7 @@ export default function App() {
                 <div className="text-[10px] text-[#86868b] uppercase font-bold tracking-widest">{currentUser.nestName}</div>
               </div>
               <button
-                onClick={() => { logout(); }}
+                onClick={handleLogout}
                 className="p-2 rounded-2xl bg-gray-50 text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all border border-gray-100"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +168,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           userRole={currentUser?.role}
           activeTab="haat"
@@ -190,7 +196,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="me"
           onSearchClick={() => setIsSearchOpen(true)}
@@ -220,7 +226,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="me"
           onSearchClick={() => setIsSearchOpen(true)}
@@ -255,7 +261,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="tribe"
           onSearchClick={() => setIsSearchOpen(true)}
@@ -285,7 +291,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           userRole={currentUser?.role}
           activeTab="haat"
@@ -323,7 +329,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           userRole={currentUser?.role}
           activeTab="help"
@@ -346,7 +352,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="studio"
           subPage={subPage}
@@ -368,7 +374,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           userRole={currentUser?.role}
           activeTab="flow"
@@ -391,7 +397,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="studio"
           subPage={subPage}
@@ -413,7 +419,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="tribe"
           subPage={subPage}
@@ -435,7 +441,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="studio"
           subPage={subPage}
@@ -457,7 +463,7 @@ export default function App() {
           onCartClick={() => setIsCartOpen(true)}
           userName={currentUser?.name}
           nestName={currentUser?.nestName}
-          onSignOut={logout}
+          onSignOut={handleLogout}
           balance={currentUser ? usePoints().getBalance(userId) : 0}
           activeTab="studio"
           subPage={subPage}
@@ -471,6 +477,33 @@ export default function App() {
     )
   }
 
+  if (subPage === 'nest-details') {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header
+          cartCount={cartCount}
+          onCartClick={() => setIsCartOpen(true)}
+          userName={currentUser?.name}
+          nestName={currentUser?.nestName}
+          onSignOut={handleLogout}
+          balance={currentUser ? usePoints().getBalance(userId) : 0}
+          activeTab="studio"
+          subPage={subPage}
+          onSearchClick={() => setIsSearchOpen(true)}
+          onHomeClick={goToHome}
+          onTabChange={handleTabChange}
+        />
+        <NestDetails onBack={() => setSubPage(null)} />
+        <CartDrawer
+          isOpen={isCartOpen}
+          onClose={() => setIsCartOpen(false)}
+          onCheckout={() => setIsCheckout(true)}
+        />
+        <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} isAuthenticated={!!currentUser} />
+      </div>
+    )
+  }
+
   // --- RESIDENT VIEW (main 4-tab layout) ---
   return (
     <div className="min-h-screen bg-white pb-16">
@@ -479,7 +512,7 @@ export default function App() {
         onCartClick={() => setIsCartOpen(true)}
         userName={currentUser?.name}
         nestName={currentUser?.nestName}
-        onSignOut={logout}
+        onSignOut={handleLogout}
         balance={currentUser ? usePoints().getBalance(userId) : 0}
         userRole={currentUser?.role}
         activeTab={activeTab}

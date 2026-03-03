@@ -112,7 +112,7 @@ export default function Header({ cartCount, onCartClick, userName, nestName, onS
                     {!userName && (
                         <button
                             onClick={() => onTabChange('me')}
-                            className={`ml-4 px-6 py-2 rounded-xl text-sm font-black border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
+                            className={`hidden md:block ml-4 px-6 py-2 rounded-xl text-sm font-black border ${isColored ? 'border-white/30 hover:bg-white/10 text-white' : 'border-gray-200 hover:bg-gray-50 text-[#1d1d1f]'} transition-all`}
                         >
                             Login
                         </button>

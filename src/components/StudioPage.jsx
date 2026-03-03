@@ -6,7 +6,7 @@ export default function StudioPage({ onNavigate }) {
             title: 'Nest',
             desc: 'Room, meals, doctor & safety kit',
             badge: 'Save ₹400/mo on rent',
-            navigateTo: 'store',
+            navigateTo: 'nest-details',
         },
         {
             id: 'haat',
@@ -22,7 +22,7 @@ export default function StudioPage({ onNavigate }) {
             title: 'Health',
             desc: 'Free check-up, blood test & medicine',
             badge: 'Free every month',
-            navigateTo: null,
+            navigateTo: 'nest-details',
         },
         {
             id: 'safety',
@@ -30,7 +30,7 @@ export default function StudioPage({ onNavigate }) {
             title: 'Safety',
             desc: 'Lock, whistle, SOS & emergency card',
             badge: 'Kit included',
-            navigateTo: null,
+            navigateTo: 'nest-details',
         },
         {
             id: 'autosubscribe',
