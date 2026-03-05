@@ -42,7 +42,7 @@ const nestProducts = [
 
 const filters = ['All', 'Studio', 'Health', 'Safety']
 
-export default function NestDetails({ onBack }) {
+export default function NestDetails({ onBack, onNavigate }) {
     const [search, setSearch] = useState('')
     const [activeFilter, setActiveFilter] = useState('All')
     const [addedItems, setAddedItems] = useState({})
@@ -124,10 +124,10 @@ export default function NestDetails({ onBack }) {
                     <div key={product.id} className="bg-white rounded-[24px] p-4 flex flex-col gap-2 shadow-sm border border-transparent hover:border-gray-100 transition-all">
                         {/* Category tag */}
                         <p className={`text-[9px] font-black uppercase tracking-[0.05em] ${product.category === 'Studio' ? 'text-[#0071e3]' :
-                                product.category === 'Flow' ? 'text-[#1a5c35]' :
-                                    product.category === 'Health' ? 'text-[#e84040]' :
-                                        product.category === 'Safety' ? 'text-[#2e7d32]' :
-                                            'text-[#bf4800]'
+                            product.category === 'Flow' ? 'text-[#1a5c35]' :
+                                product.category === 'Health' ? 'text-[#e84040]' :
+                                    product.category === 'Safety' ? 'text-[#2e7d32]' :
+                                        'text-[#bf4800]'
                             }`}>
                             {product.category}
                         </p>
@@ -147,10 +147,10 @@ export default function NestDetails({ onBack }) {
                             onClick={() => handleAdd(product)}
                             disabled={product.price === 0}
                             className={`mt-2 w-full py-2.5 rounded-xl text-sm font-bold transition-all border ${product.price === 0
-                                    ? 'bg-gray-50 text-gray-400 border-gray-100'
-                                    : addedItems[product.id]
-                                        ? 'bg-[#f0f0f0] text-[#86868b] border-gray-200'
-                                        : 'bg-white text-[#bf4800] border-[#bf4800] hover:bg-[#bf4800] hover:text-white active:scale-95'
+                                ? 'bg-gray-50 text-gray-400 border-gray-100'
+                                : addedItems[product.id]
+                                    ? 'bg-[#f0f0f0] text-[#86868b] border-gray-200'
+                                    : 'bg-white text-[#bf4800] border-[#bf4800] hover:bg-[#bf4800] hover:text-white active:scale-95'
                                 }`}
                         >
                             {product.price === 0 ? '✓ Included' : (addedItems[product.id] ? '✓ Added' : '+ Add')}
@@ -165,6 +165,25 @@ export default function NestDetails({ onBack }) {
                     <p className="text-[#86868b] font-black text-sm uppercase tracking-widest mt-2">No items found</p>
                 </div>
             )}
+
+            {/* SOS Banner */}
+            <div className="px-3 mt-4">
+                <button
+                    onClick={() => onNavigate && onNavigate('sos')}
+                    className="w-full bg-[#c0392b] hover:bg-[#a93226] active:scale-[0.98] transition-all rounded-[24px] p-5 flex items-center gap-4 shadow-lg shadow-red-200"
+                >
+                    <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl shrink-0">
+                        🆘
+                    </div>
+                    <div className="text-left flex-1">
+                        <p className="text-white font-black text-base tracking-tight leading-tight">Need help?</p>
+                        <p className="text-white/60 text-xs font-medium mt-0.5">Press for emergency SOS</p>
+                    </div>
+                    <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
         </div>
     )
 }

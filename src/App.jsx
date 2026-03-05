@@ -30,6 +30,7 @@ import Checkout from './components/Checkout'
 import OrderTerminal from './components/OrderTerminal'
 import GlobalSearch from './components/GlobalSearch'
 import NestDetails from './components/NestDetails'
+import SOSPage from './components/SOSPage'
 
 export default function App() {
   const { currentUser, logout: authLogout, loading } = useAuth()
@@ -493,12 +494,21 @@ export default function App() {
           onHomeClick={goToHome}
           onTabChange={handleTabChange}
         />
-        <NestDetails onBack={() => setSubPage(null)} />
+        <NestDetails onBack={() => setSubPage(null)} onNavigate={(page) => setSubPage(page)} />
         <CartDrawer
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
           onCheckout={() => setIsCheckout(true)}
         />
+        <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} isAuthenticated={!!currentUser} />
+      </div>
+    )
+  }
+
+  if (subPage === 'sos') {
+    return (
+      <div className="min-h-screen">
+        <SOSPage onBack={() => setSubPage(null)} />
         <BottomNav activeTab={activeTab} subPage={subPage} onTabChange={handleTabChange} isAuthenticated={!!currentUser} />
       </div>
     )
